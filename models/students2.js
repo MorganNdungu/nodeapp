@@ -13,8 +13,8 @@ const studentsSchema = new Schema({
         required:[true, 'lastname is required']
     },
     gender:{
-        type:string
-    }
+        type:String
+    },
 });
 const Student = mongoose.model('student',studentsSchema);
-module.exports=student;
+module.exports=Student;

@@ -1,4 +1,7 @@
 const express=require('express');
+require('dotenv').config();
+require('./helper/innit_mongodb')
+
 const routes=require('./routes/api');
 const app=express();
 
@@ -6,7 +9,6 @@ const studentRoutes = require('./routes/api')
 
 app.use('/students', studentRoutes);
 
-app.use(routes);
 
 
 //handling 404
@@ -16,9 +18,16 @@ app.use((err, req, res, next)=>{
       error:{
         status: err.status || 500,
         message: err.message
-      };
+      }
     })
 })
+
+//add student
+route.post('/', async(req, res, next)=>{
+  //console
+})
+app.use(routes);
+
 
 app.listen(process.env.port || 4000, function(){
     console.log('now listening for request on:http://localhost:4000');
