@@ -2,7 +2,7 @@ const express=require ('express');
 const routes=express.Router();
 
 //get alist of student from the database
-routes.get ('/student', (req, res)=>{
+routes.get ('/students', (req, res)=>{
     res.send({type:'get Request'});
 });
 
