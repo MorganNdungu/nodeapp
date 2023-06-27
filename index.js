@@ -22,10 +22,8 @@ app.use((err, req, res, next)=>{
     })
 })
 
-//add student
-route.post('/', async(req, res, next)=>{
-  //console
-})
+
+
 app.use(routes);
 
 
