@@ -2,10 +2,14 @@ const express=require('express');
 require('dotenv').config();
 require('./helper/innit_mongodb')
 
-const routes=require('./routes/api');
+const studentRoutes = require('./routes/api')
+
+
 const app=express();
 
-const studentRoutes = require('./routes/api')
+
+
+app.use(express.json());
 
 app.use('/students', studentRoutes);
 
@@ -24,7 +28,6 @@ app.use((err, req, res, next)=>{
 
 
 
-app.use(routes);
 
 
 app.listen(process.env.port || 4000, function(){
