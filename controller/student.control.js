@@ -37,7 +37,7 @@ module.exports={
                 const  student=new Student(req.body)
                 const update= req.body;
                 const option = {new: true}
-                const result=await student.findByIdandUpdate(id, update, option)
+                const result=await Student.findByIdandUpdate(id, update, option)
         res.send(result);
         }catch(error) {
                 console.log(error.message)

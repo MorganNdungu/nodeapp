@@ -3,6 +3,7 @@ require('dotenv').config();
 require('./helper/innit_mongodb')
 
 const studentRoutes = require('./routes/api')
+const authRoutes=require('./routes/auth.route')
 
 
 const app=express();
@@ -12,6 +13,7 @@ const app=express();
 app.use(express.json());
 
 app.use('/students', studentRoutes);
+app.use('/auth', authRoutes );
 
 
 
