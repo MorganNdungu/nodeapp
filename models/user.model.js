@@ -10,11 +10,11 @@ const usersSchema = new schema({
         lowercase: true,
      },
     
-    hash_password:{
+    password:{
         type:String,
 
         required:[true, 'password is required']
     }
 });
-const User = mongoose.model('user',registersSchema);
+const User = mongoose.model('user',usersSchema);
 module.exports=User;
