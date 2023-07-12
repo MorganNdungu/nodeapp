@@ -36,9 +36,9 @@ routes1.post('/login', async (req, res)=>{
 routes1.post('/refresh token', async (req, res)=>{
     res.send('refresh token route')
 })
-routes1.get('/',async( req , res)=>{
-    res.send({type:'get request'})
-})
+// routes1.get('/',async( req , res)=>{
+//     res.send({type:'get request'})
+// })
 routes1.delete('/logout', async (req, res)=>{
     res.send('logout route')
 })
