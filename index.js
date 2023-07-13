@@ -8,7 +8,7 @@ const authRoutes=require('./routes/auth.route')
 
 const app=express();
 const cors= require ('cors')
-const allowedOrigin=['http://localhost:3001']
+const allowedOrigin=['http://localhost:3000']
 
 
 
