@@ -5,9 +5,9 @@ require('./helper/innit_mongodb')
 const studentRoutes = require('./routes/api')
 const authRoutes=require('./routes/auth.route')
 
+const cors= require ('cors')
 
 const app=express();
-const cors= require ('cors')
 const allowedOrigin=['http://localhost:3000']
 
 

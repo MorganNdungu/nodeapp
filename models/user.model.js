@@ -11,7 +11,7 @@ const usersSchema = new schema({
      },
     
     password:{
-        type:String,
+        type: String,
 
         required:[true, 'password is required']
     }
