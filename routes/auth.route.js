@@ -35,6 +35,7 @@ routes1.post('/register' ,async (req, res, next)=>{
         next(error)
     }
 
+})
 routes1.post('/login', async (req, res)=>{
     const {email,password}= req.body
     try{
@@ -44,7 +45,9 @@ routes1.post('/login', async (req, res)=>{
         const user =await User.findOne({email});
     
      if (!user){
-         throw createHttpError.Conflict(`{email}  does not exist in our daatabase. please consider registering `);
+        return res.status(401).json({message: 'user doesnot exist'})
+
+        //  throw createHttpError.Conflict(`{email}  does not exist in our daatabase. please consider registering `);
      }
      //compare password
      const isPasswordValid= await bcrypt.compare(password,user.password)
@@ -54,16 +57,17 @@ routes1.post('/login', async (req, res)=>{
         return res.status(401).json({message: 'Invalid Password'})
      }
      //genertaiong jwt token
-     const token=jwt.sign({userID:user._id}.JWT_SECRET,{expiresIn: '1h'});
+     const token=jwt.sign({userID:user._id, email: email },JWT_SECRET,{expiresIn: '1h'});
+     
 
-     res.json(200).json ({type:"bearer"},{token:token})
+     res.status(200).json ({type:"bearer",token:token});
 
     }
-    catch{
-        console.error(err) 
+    catch(error){
+        console.error(error) 
         res.status(500).json({message: 'server error'});
     }
-    res.send('login route')
+    // res.send('login route')
 })
 routes1.post('/refresh token', async (req, res)=>{
     res.send('refresh token route')
@@ -74,6 +78,6 @@ routes1.post('/refresh token', async (req, res)=>{
 routes1.delete('/logout', async (req, res)=>{
     res.send('logout route')
 })
-})
 
-module.exports = routes1
+
+module.exports = routes1;

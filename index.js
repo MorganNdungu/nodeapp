@@ -8,23 +8,24 @@ const authRoutes=require('./routes/auth.route')
 const cors= require ('cors')
 
 const app=express();
-const allowedOrigin=['http://localhost:3000']
+const allowedOrigin=['http://localhost:3000', 'http://localhost:4000']
 
 
 
 app.use(express.json());
 
+
+// app.use(cors({
+//   origin:(origin, callback)=>{
+//     if(origin || allowedOrigin.includes(origin)){
+//       callback(null. true)
+//     }else{
+//       callback(new Error('Not Allowed by cors'))
+//     }
+//   }
+// }));
 app.use('/students', studentRoutes);
 app.use('/auth', authRoutes );
-app.use(cors({
-  origin:(origin, callback)=>{
-    if(origin || allowedOrigin.includes(origin)){
-      callback(null. true)
-    }else{
-      callback(new Error('Not Allowed by cors'))
-    }
-  }
-}));
 
 
 
